@@ -1,0 +1,15 @@
+﻿<Window x:Class="WpfApp1.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Grid Margin="-1,0,0,0">
+        <Image Margin="0,-37.313,-18.222,0" Source="1640461779_32-funart-pro-p-foni-s-engri-byords-34.jpg" Stretch="Fill"/>
+        <Viewbox Stretch="Uniform" Margin="0,0,0,10">
+            <Image Source="pngwing.com.png" Stretch="Fill" Height="600" Width="628" Margin="-2448,1960,2155,425"/>
+        </Viewbox>
+    </Grid>
+</Window>
