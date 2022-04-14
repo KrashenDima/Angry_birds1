@@ -114,7 +114,7 @@
     <Resource Include="png-transparent-angry-birds-star-wars-ii-angry-birds-space-angry-birds-stella-angry-birds-classic-others-game-smiley-bird.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="pngwing.com.png" />
+    <Resource Include="bird.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="1640461861_43-funart-pro-p-foni-s-engri-byords-46.png" />

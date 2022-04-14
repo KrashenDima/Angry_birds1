@@ -9,7 +9,7 @@
     <Grid>
         <Image Margin="0,-2.385,0,0" Source="1585255115_4-p-foni-s-angry-birds-14.jpg" Stretch="Fill"/>
         <Viewbox Stretch="Uniform" Margin="0,-2.385,0,2.385">
-            <Image Source="pngwing.com.png" Stretch="Fill" RenderTransformOrigin="8.863,3.94" Height="50" Width="50" Margin="-7,6,2,65"/>
+            <Image Source="bird.png" Stretch="Fill" RenderTransformOrigin="8.863,3.94" Height="50" Width="50" Margin="-7,6,2,65"/>
         </Viewbox>
         <Viewbox Stretch="Uniform">
             <Button Content="Start" FontFamily="Tempus Sans ITC" FontSize="36" Height="45.404" Width="215.343" Margin="169,27,165,0" Click="Button_Click">

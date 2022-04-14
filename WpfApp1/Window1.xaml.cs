@@ -19,9 +19,54 @@ namespace WpfApp1
     /// </summary>
     public partial class Window1 : Window
     {
+        Vector relativeMousePos;
+        FrameworkElement draggedObject;
+
         public Window1()
         {
             InitializeComponent();
+        }
+
+        void StartDrag(object sender, MouseButtonEventArgs e)
+        {
+            draggedObject = (FrameworkElement)sender;
+            relativeMousePos = e.GetPosition(draggedObject) - new Point();
+            draggedObject.MouseMove += OnDragMove;
+            draggedObject.LostMouseCapture += OnLostCapture;
+            draggedObject.MouseUp += OnMouseUp;
+            Mouse.Capture(draggedObject);
+        }
+
+        void OnDragMove(object sender, MouseEventArgs e)
+        {
+            UpdatePosition(e);
+        }
+
+        void UpdatePosition(MouseEventArgs e)
+        {
+            var point = e.GetPosition(DragArena);
+            var newPos = point - relativeMousePos;
+            Canvas.SetLeft(draggedObject, newPos.X);
+            Canvas.SetTop(draggedObject, newPos.Y);
+        }
+
+        void OnMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            FinishDrag(sender, e);
+            Mouse.Capture(null);
+        }
+
+        void OnLostCapture(object sender, MouseEventArgs e)
+        {
+            FinishDrag(sender, e);
+        }
+
+        void FinishDrag(object sender, MouseEventArgs e)
+        {
+            draggedObject.MouseMove -= OnDragMove;
+            draggedObject.LostMouseCapture -= OnLostCapture;
+            draggedObject.MouseUp -= OnMouseUp;
+            UpdatePosition(e);
         }
     }
 }

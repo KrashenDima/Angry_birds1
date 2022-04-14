@@ -8,8 +8,19 @@
         Title="Window1" Height="450" Width="800">
     <Grid Margin="-1,0,0,0">
         <Image Margin="0,-37.313,-18.222,0" Source="1640461779_32-funart-pro-p-foni-s-engri-byords-34.jpg" Stretch="Fill"/>
-        <Viewbox Stretch="Uniform" Margin="0,0,0,10">
-            <Image Source="pngwing.com.png" Stretch="Fill" Height="600" Width="628" Margin="-2448,1960,2155,425"/>
+        <Viewbox>
+            <Canvas Name ="DragArena" Height="450" Width="800" >
+                <Image Height="72.685" Source="bird.png" Stretch="Fill" Width="73.569" RenderTransformOrigin="0.521,0.615" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="33.734" Canvas.Top="308.808" MouseDown="StartDrag">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-15.876"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Canvas>
         </Viewbox>
     </Grid>
 </Window>
