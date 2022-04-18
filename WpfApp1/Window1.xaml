@@ -10,7 +10,7 @@
         <Image Margin="0,-37.313,-18.222,0" Source="1640461779_32-funart-pro-p-foni-s-engri-byords-34.jpg" Stretch="Fill"/>
         <Viewbox>
             <Canvas Name ="DragArena" Height="450" Width="800" >
-                <Image Height="72.685" Source="bird.png" Stretch="Fill" Width="73.569" RenderTransformOrigin="0.521,0.615" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="33.734" Canvas.Top="308.808" MouseDown="StartDrag">
+                <Image Name="Bird"  Height="72.685" Source="bird.png" Stretch="Fill" Width="73.569" RenderTransformOrigin="0.521,0.615" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="33.734" Canvas.Top="308.808" >
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -22,5 +22,10 @@
                 </Image>
             </Canvas>
         </Viewbox>
+        <TextBox Name="Velocity" HorizontalAlignment="Left" Height="18.667" Margin="25.167,17.667,0,0" TextWrapping="Wrap" Text="Enter velocity" VerticalAlignment="Top" Width="105.25" TextChanged="Get_Velocity" />
+        <TextBox Name="Angle" HorizontalAlignment="Left" Height="18.667" Margin="152.416,17.667,0,0" TextWrapping="Wrap" Text="Enter angle" VerticalAlignment="Top" Width="105.25" TextChanged="Get_Angle"/>
+        <Button Content="Start Move" HorizontalAlignment="Left" Height="18.667" Margin="530.618,16.667,0,0" VerticalAlignment="Top" Width="64.085" Click="ButtonStartMove_Click"/>
+        <TextBox x:Name="Weight" HorizontalAlignment="Left" Height="18.667" Margin="273.416,17.667,0,0" TextWrapping="Wrap" Text="Enter weight" VerticalAlignment="Top" Width="105.25" TextChanged="Get_Weight"/>
+        <TextBox x:Name="Splitting" HorizontalAlignment="Left" Height="18.667" Margin="397.416,17.667,0,0" TextWrapping="Wrap" Text="Enter splitting" VerticalAlignment="Top" Width="105.25" TextChanged="Get_Splitting"/>
     </Grid>
 </Window>
