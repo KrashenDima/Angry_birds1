@@ -48,7 +48,7 @@ namespace WpfApp1
 
             while (t < T)
             {
-                double k = t/2;
+                double k = 1/2;
                 Point_and_Velocity getpos =
                   Get_Position(Points, i, dt, weight, k);
                 Points.Add(getpos);

@@ -59,7 +59,7 @@ namespace WpfApp1
             pf.calculation(Canvas.GetLeft(Bird), Canvas.GetTop(Bird));
 
             DispatcherTimer tmr = new DispatcherTimer();
-            tmr.Interval = TimeSpan.FromMilliseconds(1);
+            tmr.Interval = TimeSpan.FromMilliseconds(0.5);
             tmr.Tick += new EventHandler(TimerOnTick);
             tmr.Start();
 
