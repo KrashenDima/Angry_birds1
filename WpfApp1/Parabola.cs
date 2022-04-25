@@ -28,7 +28,7 @@ namespace WpfApp1
             double x = Points[i - 1].x + dt * Points[i - 1].Vx;
             double Vx = Points[i - 1].Vx - dt * k * Points[i - 1].Vx / m;
 
-            double y = Points[i - 1].y + dt * Points[i - 1].Vy;
+            double y = Points[i - 1].y - dt * Points[i - 1].Vy;
             double Vy = Points[i - 1].Vy - dt * (g + k * Points[i - 1].Vy / m);
 
             return new Point_and_Velocity(x, y, Vx, Vy);
@@ -48,7 +48,7 @@ namespace WpfApp1
 
             while (t < T)
             {
-                double k = t / 2;
+                double k = t/2;
                 Point_and_Velocity getpos =
                   Get_Position(Points, i, dt, weight, k);
                 Points.Add(getpos);

@@ -22,57 +22,15 @@ namespace WpfApp1
     /// </summary>
     public partial class Window1 : Window
     {
-        //Vector relativeMousePos;
-        //FrameworkElement draggedObject;
-
 
         public string velocity, angle, weight, splitting;
+        ParabolaFlight pf;
+        int i = 1;
+
         public Window1()
         {
             InitializeComponent();
         }
-
-        /*void StartDrag(object sender, MouseButtonEventArgs e)
-        {
-            draggedObject = (FrameworkElement)sender;
-            relativeMousePos = e.GetPosition(draggedObject) - new Point();
-            draggedObject.MouseMove += OnDragMove;
-            draggedObject.LostMouseCapture += OnLostCapture;
-            draggedObject.MouseUp += OnMouseUp;
-            Mouse.Capture(draggedObject);
-        }
-
-        void OnDragMove(object sender, MouseEventArgs e)
-        {
-            UpdatePosition(e);
-        }
-
-        void UpdatePosition(MouseEventArgs e)
-        {
-            var point = e.GetPosition(DragArena);
-            var newPos = point - relativeMousePos;
-            Canvas.SetLeft(draggedObject, newPos.X);
-            Canvas.SetTop(draggedObject, newPos.Y);
-        }
-
-        void OnMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            FinishDrag(sender, e);
-            Mouse.Capture(null);
-        }
-
-        void OnLostCapture(object sender, MouseEventArgs e)
-        {
-            FinishDrag(sender, e);
-        }
-
-        void FinishDrag(object sender, MouseEventArgs e)
-        {
-            draggedObject.MouseMove -= OnDragMove;
-            draggedObject.LostMouseCapture -= OnLostCapture;
-            draggedObject.MouseUp -= OnMouseUp;
-            UpdatePosition(e);
-        }*/
 
         private void Get_Velocity(object sender, TextChangedEventArgs e)
         {
@@ -94,24 +52,26 @@ namespace WpfApp1
             splitting = Splitting.Text;
         }
 
-        void TimerOnTick(Point_and_Velocity pv)
-        {
-            Canvas.SetLeft(Bird, pv.x - Canvas.GetLeft(Bird));
-            Canvas.SetTop(Bird, pv.y - Canvas.GetTop(Bird));
-        }
-
         private void ButtonStartMove_Click(object sender, RoutedEventArgs e)
         {
-            ParabolaFlight pf = new ParabolaFlight(Convert.ToDouble(velocity), Convert.ToDouble(angle), 
-                Convert.ToDouble(weight), Convert.ToDouble(splitting));
+            pf = new ParabolaFlight(Convert.ToDouble(velocity), Convert.ToDouble(angle),
+               Convert.ToDouble(weight), Convert.ToDouble(splitting));
             pf.calculation(Canvas.GetLeft(Bird), Canvas.GetTop(Bird));
-            foreach(Point_and_Velocity pv in pf.Points)
-            {
-                DispatcherTimer tmr = new DispatcherTimer();
-                tmr.Interval = TimeSpan.FromMilliseconds(100);
-                tmr.Tick += TimerOnTick(pv);
-                tmr.Start();
-            }
+
+            DispatcherTimer tmr = new DispatcherTimer();
+            tmr.Interval = TimeSpan.FromMilliseconds(1);
+            tmr.Tick += new EventHandler(TimerOnTick);
+            tmr.Start();
+
+            if (i >= pf.Points.Count)
+                tmr.Stop();
+        }
+
+        void TimerOnTick (object sender, EventArgs e)
+        {
+            Canvas.SetLeft(Bird, pf.Points[i].x);
+            Canvas.SetTop(Bird, pf.Points[i].y);
+            i++;
         }
     }
 }

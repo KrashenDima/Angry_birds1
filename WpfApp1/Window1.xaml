@@ -10,7 +10,7 @@
         <Image Margin="0,-37.313,-18.222,0" Source="1640461779_32-funart-pro-p-foni-s-engri-byords-34.jpg" Stretch="Fill"/>
         <Viewbox>
             <Canvas Name ="DragArena" Height="450" Width="800" >
-                <Image Name="Bird"  Height="72.685" Source="bird.png" Stretch="Fill" Width="73.569" RenderTransformOrigin="0.521,0.615" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="33.734" Canvas.Top="308.808" >
+                <Image Name="Bird"  Height="73" Source="bird.png" Stretch="Fill" Width="74" RenderTransformOrigin="0.521,0.615" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="33" Canvas.Top="319" >
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
