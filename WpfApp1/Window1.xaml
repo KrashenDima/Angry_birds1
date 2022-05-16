@@ -27,5 +27,6 @@
         <Button Content="Start Move" HorizontalAlignment="Left" Height="18.667" Margin="530.618,16.667,0,0" VerticalAlignment="Top" Width="64.085" Click="ButtonStartMove_Click"/>
         <TextBox x:Name="Weight" HorizontalAlignment="Left" Height="18.667" Margin="273.416,17.667,0,0" TextWrapping="Wrap" Text="Enter weight" VerticalAlignment="Top" Width="105.25" TextChanged="Get_Weight"/>
         <TextBox x:Name="Splitting" HorizontalAlignment="Left" Height="18.667" Margin="397.416,17.667,0,0" TextWrapping="Wrap" Text="Enter splitting" VerticalAlignment="Top" Width="105.25" TextChanged="Get_Splitting"/>
+        <Button Content="Return" HorizontalAlignment="Left" Height="17.667" Margin="618,17.667,0,0" VerticalAlignment="Top" Width="71" Click="ButtonReturnToStart_Click"/>
     </Grid>
 </Window>

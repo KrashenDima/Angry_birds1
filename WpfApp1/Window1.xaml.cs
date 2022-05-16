@@ -65,12 +65,22 @@ namespace WpfApp1
 
             if (i >= pf.Points.Count)
                 tmr.Stop();
+            i = 0;
+        }
+
+        private void ButtonReturnToStart_Click(object sender, RoutedEventArgs e)
+        {
+            Canvas.SetLeft(Bird, pf.Points[0].x);
+            Canvas.SetTop(Bird, pf.Points[0].y);
         }
 
         void TimerOnTick (object sender, EventArgs e)
         {
-            Canvas.SetLeft(Bird, pf.Points[i].x);
-            Canvas.SetTop(Bird, pf.Points[i].y);
+            if (i < pf.Points.Count)
+            {
+                Canvas.SetLeft(Bird, pf.Points[i].x);
+                Canvas.SetTop(Bird, pf.Points[i].y);
+            }
             i++;
         }
     }
