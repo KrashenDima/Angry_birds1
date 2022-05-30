@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 
 namespace WpfApp1
 {
@@ -54,6 +56,42 @@ namespace WpfApp1
                 Points.Add(getpos);
                 t += dt;
                 i += 1;
+            }
+        }
+        public void Read(string path)
+        {
+            using (StreamReader sr = new StreamReader(path))
+            {
+                string s;
+
+                while ((s = sr.ReadLine()) != null)
+                {
+                    string[] subs = s.Split();
+
+                    if (!double.TryParse(subs[0], out double X))
+                    {
+                        return;
+                    }
+
+                    if (!double.TryParse(subs[1], out double Y))
+                    {
+                        return;
+                    }
+
+                    Point_and_Velocity p = new Point_and_Velocity(X, Y, 0, 0);
+                    Points.Add(p);
+                }
+            }
+        }
+
+        public async void Write(string path)
+        {
+            using (StreamWriter outputFile = new StreamWriter(path))
+            {
+                foreach (Point_and_Velocity p in Points)
+                {
+                    await outputFile.WriteLineAsync($"{p.x} {p.y}");
+                }
             }
         }
     }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,6 +11,8 @@ using System.Windows.Shapes;
 using System.Drawing;
 using System.IO;
 using System.Windows.Threading;
+using Microsoft.Win32;
+
 
 namespace WpfApp1
 {
@@ -26,6 +25,8 @@ namespace WpfApp1
         public string velocity, angle, weight, splitting;
         ParabolaFlight pf;
         int i = 1;
+        public string fileName;
+        public string fileMode = "default";
 
         public Window1()
         {
@@ -56,7 +57,21 @@ namespace WpfApp1
         {
             pf = new ParabolaFlight(Convert.ToDouble(velocity), Convert.ToDouble(angle),
                Convert.ToDouble(weight), Convert.ToDouble(splitting));
-            pf.calculation(Canvas.GetLeft(Bird), Canvas.GetTop(Bird));
+            
+
+            if ((fileMode == "write" || fileMode == "read") && fileName == null)
+            {
+                MessageBox.Show("сначала нужно выбрать файл!");
+                return;
+            }
+
+            if (fileMode != "read")
+                pf.calculation(Canvas.GetLeft(Bird), Canvas.GetTop(Bird));
+
+            if (fileMode == "write") pf.Write(fileName);
+
+            if (fileMode == "read")
+                pf.Read(fileName);
 
             DispatcherTimer tmr = new DispatcherTimer();
             tmr.Interval = TimeSpan.FromMilliseconds(0.5);
@@ -82,6 +97,36 @@ namespace WpfApp1
                 Canvas.SetTop(Bird, pf.Points[i].y);
             }
             i++;
+        }
+
+        private void PickFile(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                fileName = openFileDialog.FileName;
+                FileName.Content = "Путь файла: " + fileName;
+            }
+        }
+
+        private void PickFileMode(object sender, RoutedEventArgs e)
+        {
+            if (!IsInitialized) return;
+
+            if (e.OriginalSource is RadioButton radioButton)
+            {
+                MessageBox.Show("выбран режим: " + radioButton.Content, Title);
+
+                if (radioButton.Name == "defaultRB")
+                    fileMode = "default";
+                else if (radioButton.Name == "writeRB")
+                    fileMode = "write";
+                else
+                    fileMode = "read";
+            }
         }
     }
 }

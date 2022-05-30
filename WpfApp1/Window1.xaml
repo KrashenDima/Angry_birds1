@@ -10,7 +10,7 @@
         <Image Margin="0,-37.313,-18.222,0" Source="1640461779_32-funart-pro-p-foni-s-engri-byords-34.jpg" Stretch="Fill"/>
         <Viewbox>
             <Canvas Name ="DragArena" Height="450" Width="800" >
-                <Image Name="Bird"  Height="73" Source="bird.png" Stretch="Fill" Width="74" RenderTransformOrigin="0.521,0.615" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="33" Canvas.Top="319" >
+                <Image Name="Bird"  Height="32.495" Source="bird.png" Stretch="Fill" Width="32.94" RenderTransformOrigin="0.521,0.615" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="37.008" Canvas.Top="354.022" >
                     <Image.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform/>
@@ -28,5 +28,12 @@
         <TextBox x:Name="Weight" HorizontalAlignment="Left" Height="18.667" Margin="273.416,17.667,0,0" TextWrapping="Wrap" Text="Enter weight" VerticalAlignment="Top" Width="105.25" TextChanged="Get_Weight"/>
         <TextBox x:Name="Splitting" HorizontalAlignment="Left" Height="18.667" Margin="397.416,17.667,0,0" TextWrapping="Wrap" Text="Enter splitting" VerticalAlignment="Top" Width="105.25" TextChanged="Get_Splitting"/>
         <Button Content="Return" HorizontalAlignment="Left" Height="17.667" Margin="618,17.667,0,0" VerticalAlignment="Top" Width="71" Click="ButtonReturnToStart_Click"/>
+        <StackPanel Name="stackPanel" Margin="10,51,621,302" >
+            <RadioButton x:Name="writeRB" GroupName="Languages" Content="запись в файл" Checked="PickFileMode"/>
+            <RadioButton x:Name="readRB" GroupName="Languages" Content="чтение из файла" Checked="PickFileMode"/>
+            <RadioButton x:Name="defaultRB" GroupName="Languages" Content="по умолчанию" Checked="PickFileMode" IsChecked="True"/>
+        </StackPanel>
+        <Button  Content="Выбрать файл" HorizontalAlignment="Left" Height="20" Margin="172,47.98,0,0" VerticalAlignment="Top" Width="85.666" Click="PickFile"/>
+        <Label Name="FileName" Content="Путь файла: " HorizontalAlignment="Left" Height="27.02" Margin="172,72.98,0,0" VerticalAlignment="Top" Width="517"/>
     </Grid>
 </Window>
